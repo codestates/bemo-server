@@ -7,24 +7,6 @@ assignees: ''
 
 ---
 
----
-name: "[Project] Issue Card 발동"
-about: 원하는 이슈카드를 만들 수 있는 아름다운 Template
-title: ''
-labels: ''
-assignees: ''
-
----
-
----
-name: "[Project] 이슈 카드 발급"
-about: 원하는 이슈 카드를 만들 수 있습니다.
-title: ''
-labels: ''
-assignees: ''
-
----
-
 ## Suggestion
 >  제목만 보아도 무엇인지 알 수 있는 이슈 카드를 만들어주세요!
 
