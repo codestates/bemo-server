@@ -11,10 +11,10 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      dataId: {
+      photoId: {
         type: Sequelize.INTEGER
       },
-      text: {
+      feed: {
         type: Sequelize.STRING
       },
       createdAt: {

@@ -1,26 +1,13 @@
-// const express = require('express');
-
-// const app = express();
-
-// app.use('/', (req, res) => {
-//     res.send("hello world node server")
-// })
-
-// app.listen(5000, () => {
-//     console.log('server on 5000')
-// }); 
-
 require("dotenv").config();
 const fs = require("fs");
 const https = require("https");
 const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const usersRouter = require('./routes/users');
 
 const express = require("express");
 const app = express();
 
 const controllers = require("./controllers");
+const cookieParser = require("cookie-parser");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,11 +19,15 @@ app.use(
     })
 );
 
-app.use('/users', usersRouter);
+app.post("/signin", controllers.signin);
+app.get("/accessToken", controllers.accessToken);
+app.get("/refreshToken", controllers.refreshToken);
+app.post("/signup",controllers.signup);
+app.get("/signout",controllers.signout);
+app.get("/mypage",controllers.mypage);
+app.delete("/withdrawal",controllers.withdrawal);
+app.get("/google", controllers.google);
 app.use(cookieParser());
-app.post("/login", controllers.login);
-app.get("/accesstokenrequest", controllers.accessTokenRequest);
-app.get("/refreshtokenrequest", controllers.refreshTokenRequest);
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 
