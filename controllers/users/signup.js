@@ -1,4 +1,5 @@
 const { User } = require("../../models");
+const  bcrypt  =  require ( 'bcrypt' );
 
 module.exports = async (req, res) => {
     // TODO : 회원가입 로직 및 유저 생성 로직 작성
@@ -8,6 +9,8 @@ module.exports = async (req, res) => {
     if (!username || !email || !password) {
         res.status(422).send('회원정보를 정확히 입력해주세요.')
     }
+    // bcrypt를 이용하여 비밀번호 암호화
+    const hash = await bcrypt.hash(password, 12);
     //findOrCreate - 특정 요소를 검색하거나, 존재하지 않으면 새로 생성
     //findOrCreate 메서드는 DB에 특정 요소가 존재하는지 검사합니다. 
     //만약 존재한다면 해당하는 인스턴스를 반환하고, 그렇지 않으면 새로 생성합니다.
@@ -18,7 +21,7 @@ module.exports = async (req, res) => {
         },
         defaults: {
             username: username,
-            password: password,
+            password: hash,
         }
     })
         // findOrCreate => [user값, boolean] 배열형태 
