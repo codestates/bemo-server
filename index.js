@@ -2,27 +2,28 @@ require("dotenv").config();
 const fs = require("fs");
 const https = require("https");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const express = require("express");
 const app = express();
 
 const controllers = require("./controllers");
-const cookieParser = require("cookie-parser");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
     cors({
-        origin: ["https://localhost:8080/"],
+        origin: ["https://localhost:3000/"],
         credentials: true,
         methods: ["GET", "POST", "OPTIONS"],
     })
 );
 
 app.use(cookieParser());
-// app.post("/signin", controllers.signin);
-// app.get("/accessToken", controllers.accessToken);
-// app.get("/refreshToken", controllers.refreshToken);
+app.post("/signin", controllers.signin);
+app.get("/accessToken", controllers.accessToken);
+app.get("/refreshToken", controllers.refreshToken);
 app.post("/signup", controllers.signup);
 // app.get("/signout",controllers.signout);
 // app.get("/mypage",controllers.mypage);
