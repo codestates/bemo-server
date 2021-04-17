@@ -3,24 +3,27 @@ dotenv.config();
 
 module.exports = {
   development: {
-    username: "root",
+    username: "admin",
     password: process.env.DATABASE_PASSWORD,
-    database: "bemo_development",
-    host: "127.0.0.1",
-    dialect: "mysql"
+    database: "bemo",
+    host: "first-project-bemo.cuj6krjod3k4.us-east-2.rds.amazonaws.com",
+    dialect: "mysql",
+    port: '13306'
   },
   test: {
-    username: "root",
+    username: "admin",
     password: process.env.DATABASE_PASSWORD,
     database: "bemo_test",
-    host: "127.0.0.1",
-    dialect: "mysql"
+    host: "first-project-bemo.cuj6krjod3k4.us-east-2.rds.amazonaws.com",
+    dialect: "mysql",
+    port: '13306'
   },
   production: {
-    username: "root",
+    username: "admin",
     password: process.env.DATABASE_PASSWORD,
     database: "bemo_production",
-    host: "127.0.0.1",
-    dialect: "mysql"
+    host: "first-project-bemo.cuj6krjod3k4.us-east-2.rds.amazonaws.com",
+    dialect: "mysql",
+    port: '13306'
   }
 }
