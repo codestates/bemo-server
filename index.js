@@ -33,7 +33,6 @@ app.post("/login", controllers.login);
 app.get("/accessToken", controllers.accessToken);
 app.get("/refreshToken", controllers.refreshToken);
 app.post("/signup", controllers.signup);
-// app.get("/logout",controllers.logout);
 // app.get("/mypage",controllers.mypage);
 app.delete("/withdrawal", controllers.withdrawal);
 // app.get("/google", controllers.google);
