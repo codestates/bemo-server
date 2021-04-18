@@ -22,18 +22,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
     cors({
-        origin: ["https://localhost:3000/"],
+        origin: true,
         credentials: true,
         methods: ["GET", "POST", "OPTIONS"],
     })
 );
 
 app.use(cookieParser());
-app.post("/signin", controllers.signin);
+app.post("/login", controllers.login);
 app.get("/accessToken", controllers.accessToken);
 app.get("/refreshToken", controllers.refreshToken);
 app.post("/signup", controllers.signup);
-// app.get("/signout",controllers.signout);
+// app.get("/logout",controllers.logout);
 // app.get("/mypage",controllers.mypage);
 app.delete("/withdrawal", controllers.withdrawal);
 // app.get("/google", controllers.google);
