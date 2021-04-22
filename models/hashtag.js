@@ -11,8 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Hashtag.hasMany(models.Photo, {
+        foreignKey: 'tagId'
+      })
     }
   };
+
   Hashtag.init({
     tagName: DataTypes.STRING
   }, {

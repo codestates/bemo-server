@@ -11,8 +11,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Photo.belongsTo(models.User, {
+        foreignKey: 'userId'
+      })
+
+      Photo.hasMany(models.Comment, {
+        foreignKey: 'photoId'
+      })
+
+      Photo.hasMany(models.Like, {
+        foreignKey: 'photoId'
+      })
+
+      Photo.hasMany(models.Hashtag, {
+        foreignKey: 'phtoId'
+      })
     }
   };
+
   Photo.init({
     userId: DataTypes.INTEGER,
     photo: DataTypes.STRING,

@@ -36,6 +36,8 @@ app.post("/signup", controllers.signup);
 // app.get("/mypage",controllers.mypage);
 app.delete("/withdrawal", controllers.withdrawal);
 app.get("/google", controllers.google);
+app.get("/photo", controllers.photo);
+
 
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 8080;
