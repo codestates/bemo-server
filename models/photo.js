@@ -16,15 +16,18 @@ module.exports = (sequelize, DataTypes) => {
       })
 
       Photo.hasMany(models.Comment, {
-        foreignKey: 'photoId'
+        foreignKey: 'photoId',
+        constraints: false
       })
 
       Photo.hasMany(models.Like, {
-        foreignKey: 'photoId'
+        foreignKey: 'photoId',
+        constraints: false
       })
 
       Photo.hasMany(models.Hashtag, {
-        foreignKey: 'phtoId'
+        foreignKey: 'phtoId',
+        constraints: false
       })
     }
   };
