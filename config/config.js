@@ -14,7 +14,7 @@ module.exports = {
     username: "admin",
     password: process.env.DATABASE_PASSWORD,
     database: "bemo",
-    host: "first-project-bemo.cuj6krjod3k4.us-east-2.rds.amazonaws.com",
+    host: "first-project-bemo.ckcoqv8wgkzy.ap-northeast-2.rds.amazonaws.com",
     dialect: "mysql",
     port: '13306'
   }
