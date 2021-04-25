@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
     else {
         const token = authorization.split(' ')[1]
         const data = jwt.verify(token, process.env.ACCESS_SECRET)
-
+        console.log(data)
         await User.destroy({
             where: { id: data.id }
         })

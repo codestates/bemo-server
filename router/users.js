@@ -10,7 +10,6 @@ const {
         refreshToken
      } = require('../controllers/users');
 
-
 // * POST /users/signup
 router.post("/signup", signup);
 // * POST /users/login

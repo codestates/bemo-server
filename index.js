@@ -6,22 +6,8 @@ const express = require("express");
 const app = express();
 const userRouter = require('./router/users');
 const photoRouter = require("./router/photos");
-const path = require('path');
 const models = require("./models/index.js");
-const multer  = require("multer");
-const upload = multer({
-    storage: multer.diskStorage({
-      destination: (req, file, cb) => {
-        cb(null, 'uploads/');
-      },
-      filename: (req, file, cb) => {
-        const ext = path.extname(file.originalname);
-        cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
-      },
-    }),
-    limits : {fileSize: 5 * 1024 * 1024},
-});
-   
+
 // models.sequelize.sync().then(() => {
 //     console.log(" DB 연결 성공");
 // }).catch(err => {
@@ -40,13 +26,8 @@ app.use(
     })
 );
 
-
 app.use("/", userRouter);
 app.use("/photo", photoRouter);
-
-
-app.post("/photo/upload", upload.single("img"), photoRouter);
-
 
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 8080;
