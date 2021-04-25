@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Photo.belongsTo(models.User, {
-        foreignKey: 'userId'
+        foreignKey: 'userId',
+        targetKey: 'id'
       })
 
       Photo.hasMany(models.Comment, {
@@ -26,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       })
 
       Photo.hasMany(models.Hashtag, {
-        foreignKey: 'phtoId',
+        foreignKey: 'photoId',
         constraints: false
       })
     }
