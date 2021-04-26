@@ -27,7 +27,7 @@ app.use(
 );
 
 app.use("/", userRouter);
-app.use("/photo", photoRouter);
+app.use("/", photoRouter);
 
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 8080;

@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Hashtag.hasMany(models.Photo, {
+      Hashtag.belongsToMany(models.Photo, {
+        through: 'Photo_hashtag',
         foreignKey: 'tagId'
       })
     }
