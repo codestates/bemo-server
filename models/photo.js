@@ -26,7 +26,8 @@ module.exports = (sequelize, DataTypes) => {
         constraints: false
       })
 
-      Photo.hasMany(models.Hashtag, {
+      Photo.belongsToMany(models.Hashtag, {
+        through: 'Photo_hashtag',
         foreignKey: 'photoId',
         constraints: false
       })
