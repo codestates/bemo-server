@@ -7,6 +7,7 @@ const app = express();
 const userRouter = require('./router/users');
 const photoRouter = require("./router/photos");
 const hashRouter = require("./router/hashtags");
+const commentRouter = require("./router/comments")
 const models = require("./models/index.js");
 
 // models.sequelize.sync().then(() => {
@@ -30,6 +31,7 @@ app.use(
 app.use("/", userRouter);
 app.use("/", photoRouter);
 app.use("/", hashRouter);
+app.use("/", commentRouter);
 
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 8080;
