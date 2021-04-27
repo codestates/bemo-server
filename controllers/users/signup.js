@@ -33,6 +33,7 @@ module.exports = async (req, res) => {
                 res.status(409).send('이메일 또는 사용자이름이 이미 존재합니다.');
             }
             // true, email 존재하지 않으면
+
             res.status(201).json({message: '회원가입 되었습니다.', user});
         });
 }
