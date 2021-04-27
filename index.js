@@ -6,6 +6,7 @@ const express = require("express");
 const app = express();
 const userRouter = require('./router/users');
 const photoRouter = require("./router/photos");
+const hashRouter = require("./router/hashtags");
 const commentRouter = require("./router/comments")
 const models = require("./models/index.js");
 
@@ -29,6 +30,7 @@ app.use(
 
 app.use("/", userRouter);
 app.use("/", photoRouter);
+app.use("/", hashRouter);
 app.use("/", commentRouter);
 
 
