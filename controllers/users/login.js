@@ -5,7 +5,7 @@ const  bcrypt  =  require ( 'bcrypt' );
 module.exports = async (req, res) => {
     // 요청받은 email과 일치하는 user의 정보
     const userInfo = await User.findOne({where: {email: req.body.email}});
-    console.log(userInfo)
+    // console.log(userInfo)
     // email 존재하지않으면 400 에러
     if (!userInfo) {
       res.status(400).json({data:null, message: '존재하지 않는 이메일입니다.'}) 

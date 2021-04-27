@@ -1,24 +1,24 @@
-require("dotenv").config();
-
 const fs = require("fs");
 const https = require("https");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
 const express = require("express");
 const app = express();
-
-const controllers = require("./controllers");
+const userRouter = require('./router/users');
+const photoRouter = require("./router/photos");
+const hashRouter = require("./router/hashtags");
+const commentRouter = require("./router/comments")
 const models = require("./models/index.js");
 
-models.sequelize.sync().then(() => {
-    console.log(" DB 연결 성공");
-}).catch(err => {
-    console.log("연결 실패");
-    console.log(err);
-})
+// models.sequelize.sync().then(() => {
+//     console.log(" DB 연결 성공");
+// }).catch(err => {
+//     console.log("연결 실패");
+//     console.log(err);
+// })
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(
     cors({
@@ -28,16 +28,10 @@ app.use(
     })
 );
 
-app.use(cookieParser());
-app.post("/login", controllers.login);
-app.get("/accessToken", controllers.accessToken);
-app.get("/refreshToken", controllers.refreshToken);
-app.post("/signup", controllers.signup);
-// app.get("/mypage",controllers.mypage);
-app.delete("/withdrawal", controllers.withdrawal);
-app.get("/google", controllers.google);
-app.get("/photo", controllers.photo);
-
+app.use("/", userRouter);
+app.use("/", photoRouter);
+app.use("/", hashRouter);
+app.use("/", commentRouter);
 
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 8080;
