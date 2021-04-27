@@ -9,14 +9,16 @@ const {
      } = require('../controllers/photos');
 const users = require("../controllers/users");
 
+
 // * POST upload
 router.post("/photo/upload", upload.single("img"), 
   async (req,res) => {
 // console.log(req.file);
   const photoUrl = await req.file.filename
 //   console.log(url);
-  res.json({photoUrl: photoUrl});
+  res.json({photoUrl: photoUrl, message: '사진이 등록되었습니다.'});
 });
+
 
 // * POST 업로드
 router.post("/photo", photo.post);

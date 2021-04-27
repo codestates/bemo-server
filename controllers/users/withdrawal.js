@@ -11,12 +11,12 @@ module.exports = async (req, res) => {
     else {
         const token = authorization.split(' ')[1]
         const data = jwt.verify(token, process.env.ACCESS_SECRET)
-        console.log(data)
+        // console.log(data)
         await User.destroy({
             where: { id: data.id }
-        })
+        });
         res.clearCookie('refreshToken');
-        req.headers.authorization = null
+        req.headers.authorization = null;
 
         res.status(200).json({ "message": "회원탈퇴 되었습니다." })
     }

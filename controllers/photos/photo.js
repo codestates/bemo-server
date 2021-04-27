@@ -2,6 +2,7 @@ const { text } = require('express');
 const jwt = require ('jsonwebtoken');
 const { User, Photo, Hashtag, Photo_hashtag } = require("../../models");
 
+
 module.exports = {
     post : async(req,res) => { 
     // 헤더에서 authorization 추출한다. 토큰 확인을 하기 위해서
@@ -50,7 +51,6 @@ module.exports = {
         }
 
       res.json({message: '사진이 업로드 되었습니다.'});
-      
         },
 
     get : async (req,res) => {
@@ -71,7 +71,7 @@ module.exports = {
         },
     
     put : async (req,res) => {
-          
+          // 유저 정보 추출
           const authorization = req.headers.authorization;
           const token = authorization.split(' ')[1];
           const data = jwt.verify(token, process.env.ACCESS_SECRET);
@@ -79,8 +79,9 @@ module.exports = {
           const photoId = req.params.id;
           
           const userInfo = await User.findOne({ where: { id: data.id }});
-          const photo = await Photo.findOne({where: {id : photoId}});
+          const photo = await Photo.findOne({where: {id : photoId }});
 
+          //요청받은 params.id와 Photo.id를 일치시키고 관련된 정보를 수정함
           Photo.update({
             userId : userInfo.dataValues.id,
             photo : photoUrl,
@@ -137,6 +138,15 @@ module.exports = {
               });
               res.json({message: '사진이 삭제되었습니다.'});
             }
-            //hashtag에서 hashname이 없다면 삭제
+
+            // hashtag에서 hashname이 없다면 삭제    
+            // const tagId = await Hashtag.findOne({})
+            
+            // const hashtag = await Photo_hashtag.findOne({
+            //     where : {
+            //         [Op.and]: [{tagId: tag.id}, {photoId: photo.id }]
+
+            //     }
+            // })
         }
-    }
+    };
